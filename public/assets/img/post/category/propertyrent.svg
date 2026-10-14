@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+    <title>2. Global/Icon/Colored/32px/Property for Rent</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Mobile-Web" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-252.000000, -25.000000)" stroke="#E00000">
+            <g id="2.-Global/Icon/Colored/32px/Property-for-Rent" transform="translate(250.000000, 23.000000)">
+                <g id="Shape" transform="translate(2.000000, 3.000000)">
+                    <path d="M22,25.8333333 L26,25.8333333 C26.5522847,25.8333333 27,25.3856181 27,24.8333333 L27,10.1666667 C27,9.61438192 26.5522847,9.16666667 26,9.16666667 L23,9.16666667 C22.4477153,9.16666667 22,9.61438192 22,10.1666667 L22,25.8333333 Z" id="Rectangle-10" stroke-width="2" fill="#F7BABA"></path>
+                    <path d="M22.1666667,14 L23.3333333,14" id="Line-8" stroke-width="2" stroke-linecap="round"></path>
+                    <path d="M5.83333333,13.4444444 L5.83333333,3.5 L22.1666667,3.5 L22.1666667,23.7222222 C22.1666667,24.7961092 21.1219977,25.6666667 19.8333333,25.6666667 L8.16666667,25.6666667" id="Rectangle-9" stroke-width="2" stroke-linecap="round"></path>
+                    <path d="M21,18.6666667 L22.1666667,18.6666667" id="Line-8" stroke-width="2" stroke-linecap="round"></path>
+                    <path d="M19.8333333,22.1666667 L22.1666667,22.1666667" id="Line-8-Copy" stroke-width="2" stroke-linecap="round"></path>
+                    <path d="M10.5,7 L11.6666667,7" id="Line-8-Copy-5" stroke-width="2" stroke-linecap="round"></path>
+                    <path d="M10.5,10.5 L11.6666667,10.5" id="Line-8-Copy-6" stroke-width="2" stroke-linecap="round"></path>
+                    <path d="M16.3333333,7 L17.5,7" id="Line-8-Copy-8" stroke-width="2" stroke-linecap="round"></path>
+                    <path d="M16.3333333,10.5 L17.5,10.5" id="Line-8-Copy-7" stroke-width="2" stroke-linecap="round"></path>
+                    <path d="M4.66666667,14 L22.1666667,14" id="Line-8-Copy-2" stroke-width="2" stroke-linecap="round"></path>
+                    <path d="M16.3333333,24.5 L16.3333333,19.8333333 C16.3333333,18.55 15.2833333,17.5 14,17.5 L14,17.5 C12.7166667,17.5 11.6666667,18.55 11.6666667,19.8333333 L11.6666667,24.5" stroke-width="2" fill="#F7BABA" stroke-linecap="square"></path>
+                    <path d="M4.66666667,21 L4.66666667,25.6666667" id="Shape-Copy-4" stroke-width="2" stroke-linecap="round"></path>
+                    <rect id="Rectangle-2" stroke-width="2" fill="#F7BABA" x="1" y="17.3333333" width="7.33333333" height="5" rx="2"></rect>
+                    <path d="M22.75,18.6666667 L26.8333333,18.6666667" id="Line-10" stroke-width="2" stroke-linecap="square"></path>
+                    <rect id="Rectangle-11" stroke-width="2" fill="#F7BABA" x="3.5" y="0" width="21" height="3.5" rx="1"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,16 @@
+<svg width="27" height="36" viewBox="0 0 27 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="home_pin">
+<mask id="mask0_10038_61925" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="27" height="36">
+<rect id="Bounding box" x="0.0224609" width="26.002" height="36" fill="#D9D9D9"/>
+</mask>
+<g mask="url(#mask0_10038_61925)">
+<path id="home_pin_2" d="M8.4707 19.502H11.4707V15.377H14.4707V19.502H17.4707V12.377L12.9707 9.37695L8.4707 12.377V19.502ZM14.2562 31.8857C13.5222 32.5366 12.4192 32.5366 11.6852 31.8857C8.29959 28.8832 5.72183 26.0741 3.95195 23.4582C1.96445 20.5207 0.970703 17.802 0.970703 15.302C0.970703 11.552 2.17695 8.56446 4.58945 6.33945C7.00195 4.11445 9.7957 3.00195 12.9707 3.00195C16.1457 3.00195 18.9394 4.11445 21.3519 6.33945C23.7644 8.56446 24.9707 11.552 24.9707 15.302C24.9707 17.802 23.9769 20.5207 21.9894 23.4582C20.2196 26.0741 17.6418 28.8832 14.2562 31.8857Z" fill="url(#paint0_linear_10038_61925)"/>
+</g>
+</g>
+<defs>
+<linearGradient id="paint0_linear_10038_61925" x1="12.9707" y1="3.00195" x2="12.9707" y2="33.002" gradientUnits="userSpaceOnUse">
+<stop stop-color="#90BCF5"/>
+<stop offset="1" stop-color="#1270EC"/>
+</linearGradient>
+</defs>
+</svg>

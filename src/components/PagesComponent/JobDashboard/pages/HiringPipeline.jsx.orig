@@ -1,0 +1,216 @@
+'use client'
+
+import React from 'react'
+import Image from 'next/image'
+import { InfoIcon, PaginationNextIcon, PaginationPrevIcon, PlusIcon, ThreeBarsIcon } from '@/components/CustomFile/icons'
+import hiringpipelineempty from '../../../../../public/assets/img/jobdashboard/hiringpipelineempty.svg'
+import CreateHiringPipelineDrawer from '../components/CreateHiringPipelineDrawer'
+
+const DEFAULT_PIPELINE_STAGES = [
+    'Applied / Recommended',
+    'Screening',
+    '1st Interview',
+    '2nd Interview',
+    '3rd Interview',
+    'Interview Not Attended',
+    'Interview Rescheduled',
+    'Awaiting Approval',
+    'On Hold',
+    'Shortlisted',
+    'Offered',
+    'Did Not Join',
+    'Hired',
+]
+
+const PER_PAGE = 10
+
+export default function HiringPipeline() {
+    const [isDrawerOpen, setIsDrawerOpen] = React.useState(false)
+    const [pipelines, setPipelines] = React.useState([])
+    const [editingIndex, setEditingIndex] = React.useState(null)
+    const [page, setPage] = React.useState(1)
+
+    const totalPages = Math.max(1, Math.ceil(pipelines.length / PER_PAGE))
+    const pageStart = (page - 1) * PER_PAGE
+    const currentPipelines = pipelines.slice(pageStart, pageStart + PER_PAGE)
+
+    const openCreateDrawer = () => {
+        setEditingIndex(null)
+        setIsDrawerOpen(true)
+    }
+
+    const openEditDrawer = (index) => {
+        setEditingIndex(index)
+        setIsDrawerOpen(true)
+    }
+
+    const handleSubmitPipeline = (data) => {
+        if (editingIndex !== null) {
+            setPipelines((prev) => prev.map((item, index) => (index === editingIndex ? data : item)))
+            return
+        }
+        setPipelines((prev) => {
+            const next = [...prev, data]
+            setPage(Math.ceil(next.length / PER_PAGE))
+            return next
+        })
+    }
+
+    const handleDeletePipeline = (index) => {
+        setPipelines((prev) => {
+            const next = prev.filter((_, itemIndex) => itemIndex !== index)
+            const nextTotal = Math.max(1, Math.ceil(next.length / PER_PAGE))
+            setPage((prevPage) => Math.min(prevPage, nextTotal))
+            return next
+        })
+    }
+
+    return (
+        <div className="p-[0_24px_24px_24px]">
+            <div className="mb-[24px]">
+                <h1 className="text-[20px] font-[Inter-SemiBold] leading-[1.25] text-[#23262A] mb-[8px]">Hiring Pipelines</h1>
+                <p className="text-[14px] font-[Inter-Regular] leading-[1.5] text-[#424242]">
+                    Hiring pipelines will help you gain visibility of where the applicant is in the hiring process.
+                </p>
+            </div>
+
+
+            <div className="mb-[24px]">
+                <div className="rounded-[6px] bg-white p-[16px] [box-shadow:0px_4px_8px_-2px_rgba(0,0,0,0.02),0px_3px_8px_rgba(0,0,0,0.02),0px_1px_10px_rgba(0,0,0,0.04)]">
+                    <div className="flex items-center justify-between mb-[16px]">
+                        <div className="flex items-center gap-[8px]">
+                            <div className="flex h-[40px] w-[40px] items-center justify-center rounded-full bg-[#d8e2ff]">
+                                <ThreeBarsIcon className="h-[20px] w-[20px]" />
+                            </div>
+                            <h3 className="text-[16px] font-[Inter-SemiBold] text-[#23262A]">Default</h3>
+                        </div>
+                        <div className="group relative">
+                            <InfoIcon className="h-[22px] w-[22px] cursor-pointer" fill="#c2c4c7" />
+                            <div className="pointer-events-none absolute right-[28px] top-1/2 z-[10] -translate-y-1/2 whitespace-nowrap rounded-[6px] bg-[#23262A] p-[6px_10px] text-[10px] font-[Inter-SemiBold] text-white opacity-0 shadow-[0_4px_12px_rgba(0,0,0,0.2)] transition-opacity group-hover:opacity-100">
+                                Default pipeline can't be edited or deleted.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="flex flex-wrap gap-y-[16px] gap-x-[8px]">
+                        {DEFAULT_PIPELINE_STAGES.map((stage) => (
+                            <div
+                                key={stage}
+                                className="rounded-full bg-[#f4f4f5] px-[12px] py-[6px] text-[14px] font-[Inter-Regular] leading-[1.25] text-[#23262A]"
+                            >
+                                {stage}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+
+            <div className="">
+                <div className="mb-[12px] flex items-center justify-between">
+                    <h2 className="text-[20px] font-[Inter-SemiBold] leading-[1.25] text-[#23262A]">Custom Hiring Pipelines</h2>
+                    <button
+                        type="button"
+                        onClick={openCreateDrawer}
+                        className="inline-flex cursor-pointer items-center gap-[12px] "
+                    >
+                        <PlusIcon className="h-[18px] w-[18px]" fill="#DC0000" />
+                        <p className="text-[14px] font-[Inter-SemiBold] text-[#DC0000]">Create New Pipeline</p>
+                    </button>
+                </div>
+
+                {currentPipelines.length > 0 ? (
+                    <>
+                        <div className="flex flex-col gap-[12px]">
+                            {currentPipelines.map((pipeline, offset) => {
+                                const absoluteIndex = pageStart + offset
+                                return (
+                                    <div key={`${pipeline.name}-${absoluteIndex}`} className="rounded-[6px] bg-white p-[16px] [box-shadow:0px_1px_3px_rgba(15,23,42,0.08)]">
+                                        <div className="mb-[16px] flex items-center justify-between">
+                                            <div className="flex items-center gap-[10px]">
+                                                <div className="flex h-[40px] w-[40px] items-center justify-center rounded-full bg-[#d8e2ff]">
+                                                    <ThreeBarsIcon className="h-[20px] w-[20px]" />
+                                                </div>
+                                                <h3 className="text-[16px] font-[Inter-SemiBold] text-[#23262A]">{pipeline.name}</h3>
+                                            </div>
+                                            <div className="flex items-center">
+                                                <button
+                                                    type="button"
+                                                    onClick={() => openEditDrawer(absoluteIndex)}
+                                                    className="cursor-pointer p-[8px_16px] text-[14px] font-[Inter-SemiBold] text-[#3a88ef]"
+                                                >
+                                                    Edit
+                                                </button>
+                                                <button
+                                                    type="button"
+                                                    onClick={() => handleDeletePipeline(absoluteIndex)}
+                                                    className="cursor-pointer p-[8px_16px] text-[14px] font-[Inter-SemiBold] text-[#3a88ef]"
+                                                >
+                                                    Delete
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div className="flex flex-wrap gap-y-[12px] gap-x-[8px]">
+                                            {pipeline.stages.map((stage) => (
+                                                <div
+                                                    key={stage}
+                                                    className="rounded-full bg-[#f4f4f5] p-[6px_12px] text-[14px] font-[Inter-Regular] leading-[1.25] text-[#23262A]"
+                                                >
+                                                    {stage}
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )
+                            })}
+                        </div>
+
+                        <div className="mt-[18px] flex justify-center gap-[6px]">
+                            <button
+                                type="button"
+                                disabled={page === 1}
+                                onClick={() => setPage((prev) => Math.max(1, prev - 1))}
+                                className={`flex h-[32px] w-[32px] items-center justify-center rounded-[6px] border ${page === 1 ? 'cursor-not-allowed border-[rgba(143,143,143,0.35)] ' : 'cursor-pointer border-[#23262A] '}`}
+                            >
+                                <PaginationPrevIcon className="h-[14px] w-[14px]" stroke={page === 1 ? '#8F8F8F' : '#000'} />
+                            </button>
+                            <div className="flex h-[32px] min-w-[32px] items-center justify-center rounded-[6px] bg-[#232A34] px-[10px] text-[14px] font-[Inter-SemiBold] text-white">
+                                {page}
+                            </div>
+                            <button
+                                type="button"
+                                disabled={page === totalPages}
+                                onClick={() => setPage((prev) => Math.min(totalPages, prev + 1))}
+                                className={`flex h-[32px] w-[32px] items-center justify-center rounded-[6px] border ${page === totalPages ? 'cursor-not-allowed border-[rgba(143,143,143,0.35)] ' : 'cursor-pointer border-[#23262A] '}`}
+                            >
+                                <PaginationNextIcon className="h-[14px] w-[14px]" stroke={page === totalPages ? '#8F8F8F' : '#000'} />
+                            </button>
+                        </div>
+                    </>
+                ) : (
+                    <div className="rounded-[6px] bg-white px-[20px] py-[24px] text-center [box-shadow:0px_1px_3px_rgba(15,23,42,0.08)] flex flex-col items-center justify-center gap-[16px]">
+                        <div className="mx-auto w-full max-w-[550px] mb-[16px]">
+                            <Image src={hiringpipelineempty} alt="No custom hiring pipelines" className="mx-auto h-auto w-full max-w-[550px]" />
+                        </div>
+                        <p className="text-[16px] font-[Inter-Regular] text-[#616161]">
+                            You don’t have custom hiring pipelines
+                        </p>
+                        <button
+                            type="button"
+                            onClick={openCreateDrawer}
+                            className="inline-flex cursor-pointer items-center justify-center gap-[8px] rounded-[6px] bg-[#DC0000] p-[10px_20px] "
+                        >
+                            <PlusIcon className="h-[20px] w-[20px]" fill="#ffffff" />
+                            <p className="text-[14px] font-[Inter-SemiBold] text-white">Create New Pipeline</p>
+                        </button>
+                    </div>
+                )}
+            </div>
+            <CreateHiringPipelineDrawer
+                isOpen={isDrawerOpen}
+                onClose={() => setIsDrawerOpen(false)}
+                onSubmit={handleSubmitPipeline}
+                initialData={editingIndex !== null ? pipelines[editingIndex] : null}
+            />
+        </div>
+    )
+}
